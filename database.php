@@ -7,10 +7,11 @@ $dbname = 'users';
 //create connection
 $conn = mysqli_connect($host, $username, $passsword, $dbname);
 //check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} else {
-    echo "Connected successfully";
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+} else{
+    echo "conncted successfully"
+}
 
 }
 ?>
