@@ -1,5 +1,5 @@
 <?php
-$host = 'mysql:3306';
+$host = 'postgreSQL 17';
 $username = 'root';
 $password = '';
 $dbname = 'users';
