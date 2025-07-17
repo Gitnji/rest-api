@@ -1,7 +1,8 @@
 <?php
-$host = 'postgreSQL 17';
-$username = 'root';
-$password = '';
+$host = 'localhost';
+$port = '5432'
+$username = 'postgres';
+$password = 'nji237';
 $dbname = 'users';
 
 //create connection
