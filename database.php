@@ -5,11 +5,13 @@ $password = '';
 $dbname = 'users';
 
 //create connection
-$conn = mysqli_connect($host, $username, $password, $dbname);
-//check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-} else{
-    echo "conncted successfully";
+try {
+    $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
+    $pdo = new PDO($dsn, $username, $password);
+    // Set error mode to exception
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully";
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
 }
 ?>
