@@ -12,7 +12,7 @@ switch ($method) {
         //handle GET request
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
-            $result = $conn->query("SELECT * FROM users WHERE id = $id");
+            $result = $pdo->query("SELECT * FROM users WHERE id = $id");
             $data = $result->fetch_assoc();
             echo json_encode($data);
         } else {
@@ -28,7 +28,7 @@ switch ($method) {
         //handle post request
         $name = $inpput['name'];
         $email = $inpput['email'];
-        $conn->query("INSERT INTO users (name, email) VALUES ('$name', '$email')");
+        $pdo->query("INSERT INTO users (name, email) VALUES ('$name', '$email')");
         echo json_encode(['message' => 'User created successfully']);
         break;
 
@@ -37,14 +37,14 @@ switch ($method) {
         $id = $_GET['id'];
         $name = $inpput['name'];
         $email = $inpput['email'];
-        $conn->query("UPDATE users SET name = '$name', email = '$email' WHERE id = $id");
+        $pdo->query("UPDATE users SET name = '$name', email = '$email' WHERE id = $id");
         echo json_encode(['message' => 'User updated successfully']);
         break;
 
     case 'DELETE':
         //handle DELETE request
         $id = $_GET['id'];
-        $conn->query("DELETE FROM users WHERE id = $id");
+        $pdo->query("DELETE FROM users WHERE id = $id");
         echo json_encode(['message' => 'User deleted successfully']);
         break;
     default:
@@ -52,7 +52,4 @@ switch ($method) {
         http_response_code(405);
         break;
 }
-// Close the database connection
-$conn->close();
-
 ?>
