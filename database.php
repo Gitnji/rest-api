@@ -7,7 +7,7 @@ $dbname = 'users';
 
 //create connection
 try {
-    $dsn = "pgsql:host=$host;dbname=$dbname;charset=utf8mb4";
+    $dsn = "pgsql:host=$host;dbname=$dbname;host=$host";
     $pdo = new PDO($dsn, $username, $password);
     // Set error mode to exception
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
