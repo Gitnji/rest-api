@@ -1,9 +1,9 @@
 <?php
-$host = 'localhost';
+$host = 'dpg-d1t1o4ripnbc7381pas0-a';
 $port = '5432';
-$username = 'postgres';
-$password = 'nji237';
-$dbname = 'users';
+$username = 'nji';
+$password = 'fMGYkr5FEFHbIimTZcxKbSKgnlfvdGW7';
+$dbname = 'users_yfjz';
 
 //create connection
 try {
