@@ -16,7 +16,7 @@ switch ($method) {
             $data = $result->fetch_assoc();
             echo json_encode($data);
         } else {
-            $result = $conn->query("SELECT * FROM users");
+            $result = $pdo->query("SELECT * FROM users");
             $users = [];
             while ($row = $result->fetch_assoc()) {
                 $users[] = $row;
