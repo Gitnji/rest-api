@@ -13,7 +13,7 @@ switch ($method) {
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $result = $pdo->query("SELECT * FROM users WHERE id = $id");
-            $data = $result->fetch_assoc();
+            $data = $result->fetch(PDO::FETCH_ASSOC);
             echo json_encode($data);
         } else {
             $result = $pdo->query("SELECT * FROM users");
@@ -28,6 +28,13 @@ switch ($method) {
         //handle post request
         $name = $inpput['name'];
         $email = $inpput['email'];
+        //check if user already exists
+        $check = $pdo->query("SELECT * FROM users WHERE email = '$email'");
+        if ($check->rowCount() > 0) {
+            echo json_encode(['message' => 'User already exists']);
+            http_response_code(409);
+            break;
+        }
         $pdo->query("INSERT INTO users (name, email) VALUES ('$name', '$email')");
         echo json_encode(['message' => 'User created successfully']);
         break;
@@ -51,5 +58,6 @@ switch ($method) {
         echo json_encode(['message' => 'Method not allowed']);
         http_response_code(405);
         break;
+
 }
 ?>
